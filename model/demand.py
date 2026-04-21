@@ -16,21 +16,21 @@ def simulate_passenger_demand(day, hour, size=1):
 
 def get_expected_demand_arr(day, hour):
     if day in range(1, 5): # Mo-Do
-        return get_hourly_bimodal_demand(hour, 50, 250, 7.5, 1.5, 275, 17, 1.8)
+        return get_hourly_bimodal_demand(hour, 100, 250, 7.5, 1.5, 275, 17, 1.8)
     elif day == 5: # Fr
-        return get_hourly_bimodal_demand(hour, 50, 250, 7.5, 1.5, 315, 17, 2.25)
+        return get_hourly_bimodal_demand(hour, 100, 250, 7.5, 1.5, 315, 16, 2.25)
     elif day == 6: # Sa
         return get_hourly_plateau_demand(hour, 50, 175, 14, 5.5, 50, 13, 0.8)
     else: # So
-        return get_hourly_bimodal_demand(hour, 50, 175, 11, 4, 215, 18, 2)
+        return get_hourly_bimodal_demand(hour, 50, 175, 11, 4, 215, 20, 3)
 
 def get_rel_std_arr(day):
     if day in range(1, 5): # Mo-Fr
-        return 0.1
+        return 0.3
     elif day == 6: # Sa
-        return 0.25 
+        return 0.25
     else: # So
-        return 0.2
+        return 0.15
 
 def get_hourly_bimodal_demand(t, p_basis, p_peak1, mu1, sigma1, p_peak2, mu2, sigma2):
     peak1 = p_peak1 * np.exp(-((t - mu1)**2) / (2 * sigma1**2))
