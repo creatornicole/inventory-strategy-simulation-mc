@@ -79,7 +79,3 @@ def find_best_switching_path(utility_lookup, w_options, cost_up, cost_down):
         last_w = best_w
 
     return pd.DataFrame(optimized_data)
-
-
-
-
